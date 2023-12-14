@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>动态玫瑰花表白</title>
+    <title>动态炫丽的粉红色玫瑰花表白</title>
     <style>
         body {
             background-color: #fde6e6;
@@ -21,13 +21,14 @@
         const canvas = document.getElementById('roseCanvas');
         const ctx = canvas.getContext('2d');
 
-        function drawRose(petals, color) {
+        function drawRose(petals, color, bloom) {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             for (let i = 0; i < petals; i++) {
                 const angle = (i / petals) * (2 * Math.PI);
-                const x = 200 + 50 * Math.sin(angle);
-                const y = 200 + 50 * Math.cos(angle);
+                const radius = 50 + Math.sin(bloom * Math.PI) * 10;
+                const x = 200 + radius * Math.sin(angle);
+                const y = 200 + radius * Math.cos(angle);
 
                 ctx.beginPath();
                 ctx.moveTo(200, 200);
@@ -42,13 +43,16 @@
         function animateRose() {
             let frame = 0;
             const maxFrames = 100;
+            const bloomFrames = 50;
 
             function drawFrame() {
                 const progress = frame / maxFrames;
-                const petals = Math.floor(5 + progress * 10);
-                const color = `rgb(255, ${Math.round(150 + progress * 105)}, 200)`;
+                const bloomProgress = Math.min(1, frame / bloomFrames);
 
-                drawRose(petals, color);
+                const petals = Math.floor(5 + progress * 10);
+                const color = `rgb(255, ${Math.round(100 + progress * 155)}, 200)`;
+
+                drawRose(petals, color, bloomProgress);
 
                 frame++;
                 if (frame <= maxFrames) {
