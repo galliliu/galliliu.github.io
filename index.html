@@ -6,15 +6,33 @@
     <title>致小妍</title>
     <meta name="language" content="zh-CN">
     <style type="text/css">
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+    }
+
+    div {
+        width: 100%;
+        height: 100%;
+        border: 2px solid #000;
+        text-align: center;
+    }
+
     canvas {
         position: fixed;
         z-index: -1;
     }
 
-    img {
+    div span {
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+    }
+
+    div img {
         width: 50%;
         margin: auto;
-        margin-top: 80px;
         display: flex;
         justify-content: center;
         vertical-align: middle;
@@ -84,6 +102,7 @@
     </canvas>
     <div>
         <img src="rose.png" />
+        <span></span>
     </div>
 </body>
 
