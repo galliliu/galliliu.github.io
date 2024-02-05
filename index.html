@@ -1,214 +1,114 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>致小妍</title>
-    <meta name="language" content="zh-CN">
-    <style type="text/css">
-    html,
-    body {
-        width: 100%;
-        height: 100%;
-        margin: 0px;
-        padding: 0px;
-        text-align: center;
-    }
-
-    div {
-        width: 100%;
-        height: 100%;
-        margin: auto;
-        padding: 0px;
-    }
-
-
-    .content {
-        margin: center;
-        width: 100%;
-        height: 100%;
-        max-width: 1440px;
-        background-color: #FFCCCC;
-        position: relative;
-    }
-
-    .floor {
-        width: 50%;
-        margin: auto;
-        position: relative;
-        z-index: 100;
-    }
-
-    .floor img {
-        z-index: 100;
-        width: 640px;
-        height: 540px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        margin-top: -320px; /* 高度的一半 */
-        margin-left: -270px; /* 宽度的一半 */
-        animation: fadeIn 10s;
-        -webkit-animation: fadeIn 10s;
-        -moz-animation: fadeIn 10s;
-        -o-animation: fadeIn 10s;
-        -ms-animation: fadeIn 10s;
-        opacity: 0.83;
-    }
-
-    canvas {
-        z-index: 99;
-        position: absolute;
-        bottom: 0px;
-        left: 0px;
-        width: 100%;
-        max-width: 1440px;
-    }
-
-    div span {
-        display: inline-block;
-        height: 100%;
-        vertical-align: middle;
-    }
-
-    @keyframes fadeIn {
-        0% {
-            opacity: 0;
+    <meta name="title" content="致小妍">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
         }
 
-        100% {
-            opacity: 0.83;
-        }
-    }
+        body {
+            background-color: pink;
 
-    @-ms-keyframes fadeIn {
-        0% {
-            opacity: 0;
         }
 
-        100% {
-            opacity: 0.83;
-        }
-    }
-
-    @-o-keyframes fadeIn {
-        0% {
-            opacity: 0;
+        #frame {
+            position: relative;
+            width: 400px;
+            height: 300px;
+            margin: 250px auto;
         }
 
-        100% {
-            opacity: 0.83;
-        }
-    }
-
-    @-webkit-keyframes fadeIn {
-        0% {
-            opacity: 0;
+        .left,
+        .right {
+            top: 0;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
         }
 
-        100% {
-            opacity: 0.83;
-        }
-    }
+        .left {
+            left: 35px;
 
-    @-moz-keyframes fadeIn {
-        0% {
-            opacity: 0;
         }
 
-        100% {
-            opacity: 0.83;
+        .right {
+            right: 35px;
+            z-index: -1;
         }
-    }
+
+        .bottom {
+            bottom: 36px;
+            left: 100px;
+            width: 200px;
+            height: 200px;
+            transform: rotate(45deg);
+            z-index: -1;
+
+        }
+
+        .heart {
+            position: absolute;
+            box-shadow: 0 0 40px #d5093c;
+            animation: beat .4s ease infinite normal;
+            background: linear-gradient(-90deg, #F50A45 0%, #d5093c 40%);
+        }
+
+        @keyframes beat {
+            0% {
+                transform: scale(1) rotate(225deg);
+                box-shadow: 0 0 40px #d5093c;
+            }
+
+            50% {
+                transform: scale(1.1) rotate(225deg);
+                box-shadow: 0 0 70px #d5093c;
+            }
+
+            100% {
+                transform: scale(1) rotate(225deg);
+                box-shadow: 0 0 40px #d5093c;
+                ;
+            }
+        }
+
+        .word {
+            position: absolute;
+            width: 50%;
+            top: 75%;
+            left: 25%;
+            text-align: center;
+            transform: translateY(-50%);
+            font-family: 'Love Ya Like A Sister', cursive;
+            font-size: 40px;
+            color: #c70012;
+            padding: 0 20px;
+        }
     </style>
 </head>
-
 <body>
-    <div class="content" id="content">
-        <canvas id='loveCanvas'></canvas>
-        <div class="floor">
-            <img src="rose.png" />
-            <span></span>
-        </div>
+
+    <div id="frame">
+        <div class="heart left"></div>
+        <div class="heart right"></div>
+        <div class="heart bottom"></div>
     </div>
+
+    <b class="word">每次遇见你都心跳加速!</b>
+
+    <audio autoplay="autopaly" loop="loop" id="audios" preload="auto">
+        <source src="http://music.163.com/song/media/outer/url?id=526464145.mp3" />
+    </audio>
+
+    <script>
+        var b = document.body;
+        var c = document.getElementsByTagName('canvas')[0];
+        var a = c.getContext('2d');
+        document.body.clientWidth;
+        with (m = Math) C = cos, S = sin, P = pow, R = random; c.width = c.height = f = 600; h = -250; function p(a, b, c) { if (c > 60) return [S(a * 7) * (13 + 5 / (.2 + P(b * 4, 4))) - S(b) * 50, b * f + 50, 625 + C(a * 7) * (13 + 5 / (.2 + P(b * 4, 4))) + b * 400, a * 1 - b / 2, a]; A = a * 2 - 1; B = b * 2 - 1; if (A * A + B * B < 1) { if (c > 37) { n = (j = c & 1) ? 6 : 4; o = .5 / (a + .01) + C(b * 125) * 3 - a * 300; w = b * h; return [o * C(n) + w * S(n) + j * 610 - 390, o * S(n) - w * C(n) + 550 - j * 350, 1180 + C(B + A) * 99 - j * 300, .4 - a * .1 + P(1 - B * B, -h * 6) * .15 - a * b * .4 + C(a + b) / 5 + P(C((o * (a + 1) + (B > 0 ? w : -w)) / 25), 30) * .1 * (1 - B * B), o / 1e3 + .7 - o * w * 3e-6] } if (c > 32) { c = c * 1.16 - .15; o = a * 45 - 20; w = b * b * h; z = o * S(c) + w * C(c) + 620; return [o * C(c) - w * S(c), 28 + C(B * .5) * 99 - b * b * b * 60 - z / 2 - h, z, (b * b * .3 + P((1 - (A * A)), 7) * .15 + .3) * b, b * .7] } o = A * (2 - b) * (80 - c * 2); w = 99 - C(A) * 120 - C(b) * (-h - c * 4.9) + C(P(1 - b, 7)) * 50 + c * 2; z = o * S(c) + w * C(c) + 700; return [o * C(c) - w * S(c), B * 99 - C(P(b, 7)) * 50 - c / 3 - z / 1.35 + 450, z, (1 - b / 1.2) * .9 + a * .1, P((1 - b), 20) / 4 + .05] } } setInterval('for(i=0;i<1e4;i++)if(s=p(R(),R(),i%46/.74)){z=s[2];x=~~(s[0]*f/z-h);y=~~(s[1]*f/z-h);if(!m[q=y*f+x]|m[q]>z)m[q]=z,a.fillStyle="rgb("+~(s[3]*h)+","+~(s[4]*h)+","+~(s[3]*s[3]*-80)+")",a.fillRect(x,y,1,1)}', 0)
+    </script>
 </body>
-
 </html>
-<script type="text/javascript">
-var canvas = document.getElementById("loveCanvas");
-let parent = document.getElementById("content");
-let HEIGHT = parent.offsetHeight;
-let WIDTH = parent.offsetWidth;
-console.log(HEIGHT)
-console.log(WIDTH)
-
-// const WIDTH = window.innerWidth;
-// const HEIGHT = window.innerHeight;
-canvas.setAttribute("width", WIDTH);
-canvas.setAttribute("height", HEIGHT);
-var context = canvas.getContext("2d");
-
-var start = {
-    loves: [],
-    DURATION: 30,
-    begin: function() {
-        this.createLove();
-    },
-    createLove: function() {
-        for (var i = 0; i < WIDTH / (Math.floor(Math.random() * 15) + 50); i++) {
-            var love = new Love();
-            this.loves.push(love);
-        }
-        setInterval(this.drawLove.bind(this), this.DURATION);
-    },
-    drawLove: function() {
-        context.clearRect(0, 0, WIDTH, HEIGHT);
-        for (var key in this.loves) {
-            this.loves[key].draw();
-        }
-    }
-}
-
-function Love() {
-    var me = this;
-
-    function rand() {
-        me.maxScale = (Math.random() * 5.2 + 1.2) * WIDTH / 521;
-        me.curScale = 2.2 * WIDTH / 521;
-        me.x = Math.floor(Math.random() * WIDTH - 40);
-        me.y = Math.floor(HEIGHT - Math.random() * 200);
-        me.ColR = Math.floor(Math.random() * 255);
-        me.ColG = Math.floor(Math.random() * 255);
-        me.ColB = Math.floor(Math.random() * 255);
-        me.alpha = Math.random() * 0.2 + 0.8;
-        me.vector = Math.random() * 5 + 0.4;
-    }
-
-    (function() { rand(); }());
-
-    me.draw = function() {
-        if (me.alpha < 0.01) rand();
-        if (me.curScale < me.maxScale) me.curScale += 0.3;
-        x = me.x;
-        y = me.y;
-        scale = me.curScale;
-        context.fillStyle = "rgba(" + me.ColR + "," + me.ColG + "," + me.ColB + "," + me.alpha + ")";
-        context.shadowBlur = 10;
-        context.shadowColor = "rgb(" + me.ColR + "," + me.ColG + "," + me.ColB + ")";
-        context.beginPath();
-        context.bezierCurveTo(x + 2.5 * scale, y + 2.5 * scale, x + 2.0 * scale, y, x, y);
-        context.bezierCurveTo(x - 3.0 * scale, y, x - 3.0 * scale, y + 3.5 * scale, x - 3.0 * scale, y + 3.5 * scale);
-        context.bezierCurveTo(x - 3.0 * scale, y + 5.5 * scale, x - 1.0 * scale, y + 7.7 * scale, x + 2.5 * scale, y + 9.5 * scale);
-        context.bezierCurveTo(x + 6.0 * scale, y + 7.7 * scale, x + 8.0 * scale, y + 5.5 * scale, x + 8.0 * scale, y + 3.5 * scale);
-        context.bezierCurveTo(x + 8.0 * scale, y + 3.5 * scale, x + 8.0 * scale, y, x + 5.0 * scale, y);
-        context.bezierCurveTo(x + 3.5 * scale, y, x + 2.5 * scale, y + 2.5 * scale, x + 2.5 * scale, y + 2.5 * scale);
-        context.fill();
-        context.closePath();
-        me.y -= me.vector;
-        me.alpha -= (me.vector / 2.9 * 3.5 / HEIGHT);
-    }
-}
-window.onload = function() {
-    start.begin();
-}
-</script>
